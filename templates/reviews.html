@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+</head>
+<body>
+    {% for review in all_reviews : %}
+  <h2> {{ review.restaurant_id }} </h2>
+  <h2> {{ review.is_better_than_expected }} </h2>
+  <a href="{{ url_for('get_review', review_id = review.review_id) }}">Detail</a>
+  {% endfor %}
+</body>
+</html>
