@@ -88,22 +88,22 @@ def get_review(review_id):
     return render_template("review.html", review=requested_review, restaurant=review_rest.name)
 
 #admin forms
-@app.route('/admin')
-def admin_page():
+@app.route('/admin/user_admin', methods=['POST', 'GET'])
+def added_user():
+    if request.method == "POST":
+        username = request.form['username']
+        language = request.form['language']
+        gender = request.form['gender']
+        country = request.form['country']
+        region = request.form['region']
+        birth_year = request.form['birth_year']
+        income_under = request.form['income_under']
+        family_status = request.form['family_status']
+        religion = request.form['religion']
+        return f"<h1>Added New User: {username}</h1>"
     return render_template("new_user.html")
 
-@app.route("/user_added", methods=['POST', 'GET'])
-def receive_new_user():
-    username = request.form['username']
-    language = request.form['language']
-    gender = request.form['gender']
-    country = request.form['country']
-    region = request.form['region']
-    birth_year = request.form['birth_year']
-    income_under = request.form['income_under']
-    family_status = request.form['family_status']
-    religion =request.form['religion']
-    return f"<h1>Added New User: {username}, Language: {language}, Gender: {gender}, Country: {country}, Region: {region}, Birth Year: {birth_year}, Income Under: {income_under}, Family Status: {family_status}, Religion: {religion}</h1>"
+
 
 
 
