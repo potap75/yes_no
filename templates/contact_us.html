@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Page</title>
+</head>
+<body>
+    <h2>Contact Us</h2>
+    <form action="{{ url_for('contact_us') }}" method="post" novalidate>
+        <label>Sender:</label><br>
+        <input type="text" placeholder="Name" name="name"><br>
+        <label>Sender Email:</label><br>
+        <input type="text" placeholder="Email" name="email"><br>
+        <label>User Email:</label><br>
+        <input type="text" placeholder="User Email" name="user_email"><br>
+        <label>Message:</label><br>
+        <input type="text" placeholder="Message:" name="message"><br>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>

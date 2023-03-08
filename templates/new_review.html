@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+    <h2>Add New Review</h2>
+    <form action="/admin/review_admin" method="post">
+        <label>Review ID:</label><br>
+        <input type="text" placeholder="Review ID" name="review_id"><br>
+        <label>Restaurant ID:</label><br>
+        <input type="text" placeholder="Restaurant ID" name="restaurant_id"><br>
+        <label>User ID:</label><br>
+        <input type="text" placeholder="User ID" name="user_id"><br>
+        <label>Is better than expected?:</label><br>
+        <input type="text" placeholder="Is better than expected?:" name="is_better_than_expected"><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

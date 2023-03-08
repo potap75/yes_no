@@ -3,7 +3,11 @@ import requests
 from restaurant import Restaurant
 from user import User
 from review import Review
+import smtplib
 
+
+OWN_EMAIL = "Romaan75@gmail.com"
+OWN_PASSWORD = "R@man.P#tapov1975"
 
 #Restaurant data:
 restaurants = []
@@ -104,7 +108,48 @@ def added_user():
     return render_template("new_user.html")
 
 
+@app.route('/admin/restaurant_admin', methods=['POST', 'GET'])
+def added_restaurant():
+    if request.method == "POST":
+        restaurant_id = request.form['restaurant_id']
+        restaurant_name = request.form['restaurant_name']
+        restaurant_city = request.form['restaurant_city']
+        restaurant_init_rating = request.form['restaurant_init_rating']
+        restaurant_rating = request.form['restaurant_rating']
+        return f"<h1>Added New Restaurant: {restaurant_name}</h1>"
+    return render_template("new_restaurant.html")
 
+
+@app.route('/admin/review_admin', methods=['POST', 'GET'])
+def added_review():
+    if request.method == "POST":
+        review_id = request.form['review_id']
+        restaurant_id = request.form['restaurant_id']
+        user_id = request.form['user_id']
+        is_better_than_expected = request.form['is_better_than_expected']
+        return f"<h1>Added New Review: {restaurant_id} Is better than expected? : {is_better_than_expected}</h1>"
+    return render_template("new_review.html")
+
+
+
+@app.route("/contact_us", methods=["GET", "POST"])
+def contact_us():
+    if request.method == "POST":
+        data = request.form
+        print(data["name"])
+        print(data["email"])
+        print(data["user_email"])
+        print(data["message"])
+        return "<h1>Successfully sent your message</h1>"
+    return render_template("contact_us.html")
+
+
+def send_email(name, email, user_email, message):
+    email_message = f"Subject:New Message\n\nName: {name}\nEmail: {email}\nUser Email: {user_email}\nMessage:{message}"
+    with smtplib.SMTP("smtp.gmail.com") as connection:
+        connection.starttls()
+        connection.login(OWN_EMAIL, OWN_PASSWORD)
+        connection.sendmail(OWN_EMAIL, OWN_EMAIL, email_message)
 
 
 if __name__ == '__main__':
