@@ -4,7 +4,11 @@ from restaurant import Restaurant
 from user import User
 from review import Review
 import smtplib
+import sqlite3
 
+
+db = sqlite3.connect("yes_no.db")
+cursor = db.cursor()
 
 OWN_EMAIL = "Romaan75@gmail.com"
 OWN_PASSWORD = "R@man.P#tapov1975"
